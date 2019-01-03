@@ -40,3 +40,8 @@ func main() {
 	fmt.Printf("%+v\n", *pinnedArticlePidAndAuthor)
 }
 ```
+
+## credits
+
+httpClient的代码来自 https://github.com/mozillazg/go-cos/blob/master/debug/http.go 感谢🙏
+
