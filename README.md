@@ -1,6 +1,8 @@
 # ZhihuZhuanlanCrawler
 知乎专栏爬虫
 
+![screenshot1.jpg](misc/screenshot1.jpg)
+
 ## usage
 
 ```go
