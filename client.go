@@ -2,6 +2,7 @@ package ZhihuZhuanlanCrawler
 
 import (
 	"io/ioutil"
+	"log"
 	"net/http"
 )
 
@@ -34,13 +35,15 @@ func (c *Client) SendNewZhihuRequest(u string) ([]byte, error) {
 
 	res, err := c.client.Do(req)
 	if err != nil {
+		log.Println(err)
 		return nil, err
 	}
 
-	defer req.Body.Close()
+	defer res.Body.Close()
 
 	bodyByte, err := ioutil.ReadAll(res.Body)
 	if err != nil {
+		log.Println(err)
 		return nil, err
 	}
 

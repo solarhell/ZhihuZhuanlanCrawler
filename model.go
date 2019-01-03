@@ -8,7 +8,7 @@ type Zhuanlan struct {
 }
 
 type Author struct {
-	Id          int    `json:"id"`
+	Id          string `json:"id"`
 	Name        string `json:"name"`
 	Gender      int    `json:"gender"`
 	Headline    string `json:"headline"`

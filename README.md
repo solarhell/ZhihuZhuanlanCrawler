@@ -7,32 +7,34 @@
 package main
 
 import (
+	"fmt"
 	"github.com/solarhell/ZhihuZhuanlanCrawler"
-	"net/http"
-	"time"
 	"log"
+	"net/http"
 	"os"
+	"time"
 )
 
 func main() {
+	const debug = true
 	c := ZhihuZhuanlanCrawler.NewClient(&http.Client{
 		Timeout: 30 * time.Second,
 		Transport: &ZhihuZhuanlanCrawler.DebugRequestTransport{
-			RequestHeader:  true,
-			RequestBody:    true,
-			ResponseHeader: true,
-			ResponseBody:   true,
+			RequestHeader:  debug,
+			RequestBody:    debug,
+			ResponseHeader: debug,
+			ResponseBody:   debug,
 			Transport: &http.Transport{
 				IdleConnTimeout: 30 * time.Second,
-	        },
+			},
 		},
 	})
 
-    pinnedArticlePidAndAuthor, err := c.GetPinnedArticlePidAndAuthor("OTalk")
-    if err != nil {
-    	log.Println(err)
-    	os.Exit(1)
-    }
-    log.Println(pinnedArticlePidAndAuthor)
+	pinnedArticlePidAndAuthor, err := c.GetPinnedArticlePidAndAuthor("OTalk")
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
+	fmt.Printf("%+v\n", *pinnedArticlePidAndAuthor)
 }
 ```
