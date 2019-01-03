@@ -1,7 +1,7 @@
 # ZhihuZhuanlanCrawler
 知乎专栏爬虫
 
-![screenshot1.jpg](misc/screenshot1.jpg)
+![screenshot1.png](misc/screenshot1.png)
 
 ## usage
 
