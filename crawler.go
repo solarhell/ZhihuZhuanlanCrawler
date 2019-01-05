@@ -2,14 +2,13 @@ package ZhihuZhuanlanCrawler
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"log"
 )
 
 func (c *Client) GetPinnedArticlePidAndAuthor(columnName string) (*PinnedArticleAndAuthor, error) {
 	if columnName == "" {
-		return nil, errors.New(ColumnNameCanNotBeEmpty)
+		return nil, ColumnNameCanNotBeEmpty
 	}
 	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api2/columns/%s/pinned-article", columnName)
 	res, err := c.SendNewZhihuRequest(u)
@@ -30,7 +29,7 @@ func (c *Client) GetPinnedArticlePidAndAuthor(columnName string) (*PinnedArticle
 
 func (c *Client) GetSingleArticle(pid int) (*Article, error) {
 	if pid == 0 {
-		return nil, errors.New(PidCanNotBeEmpty)
+		return nil, PidCanNotBeEmpty
 	}
 	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api/posts/%d", pid)
 	res, err := c.SendNewZhihuRequest(u)
@@ -51,7 +50,7 @@ func (c *Client) GetSingleArticle(pid int) (*Article, error) {
 
 func (c *Client) GetArticlesListPids(columnName string) ([]int, error) {
 	if columnName == "" {
-		return nil, errors.New(ColumnNameCanNotBeEmpty)
+		return nil, ColumnNameCanNotBeEmpty
 	}
 
 	var limit = 20
