@@ -23,8 +23,8 @@ type Author struct {
 type PinnedArticleAndAuthor struct {
 	Type     string `json:"type"`
 	ID       int    `json:"id"`
-	Updated  int    `json:"updated"`
-	Created  int    `json:"created"`
+	Updated  int64  `json:"updated"`
+	Created  int64  `json:"created"`
 	Title    string `json:"title"`
 	ImageURL string `json:"image_url"`
 	URL      string `json:"url"`
@@ -45,8 +45,8 @@ type Article struct {
 	Title    string  `json:"title"`
 	URL      string  `json:"url"`
 	IsPinned int     `json:"is_pinned"`
-	Updated  int     `json:"updated"`
-	Created  int     `json:"created"`
+	Updated  int64   `json:"updated"`
+	Created  int64   `json:"created"`
 	Excerpt  string  `json:"excerpt"`
 	Content  string  `json:"content"`
 	ImageURL string  `json:"image_url"`
