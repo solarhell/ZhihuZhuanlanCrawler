@@ -1,48 +1,56 @@
 package ZhihuZhuanlanCrawler
 
-import "time"
-
 type Zhuanlan struct {
 	Slug string `json:"slug"`
 	Name string `json:"name"`
 }
 
 type Author struct {
-	Id          string `json:"id"`
+	ID          string `json:"id"`
 	Name        string `json:"name"`
 	Gender      int    `json:"gender"`
 	Headline    string `json:"headline"`
 	Description string `json:"description"`
 	AvatarUrl   string `json:"avatar_url"`
+	Type        string `json:"type"`
+	UID         string `json:"uid"`
+	URL         string `json:"url"`
+	URLToken    string `json:"url_token"`
+	UserType    string `json:"user_type"`
+	AvatarURL   string `json:"avatar_url"`
 }
 
 type PinnedArticleAndAuthor struct {
-	Type       string `json:"type"`
-	ID         int    `json:"id"`
-	Title      string `json:"title"`
-	TitleImage string `json:"title_image"`
-	URL        string `json:"url"`
-	Excerpt    string `json:"excerpt"`
-	Created    int    `json:"created"`
-	Updated    int    `json:"updated"`
-	Author     Author
+	Type     string `json:"type"`
+	ID       int    `json:"id"`
+	Updated  int    `json:"updated"`
+	Created  int    `json:"created"`
+	Title    string `json:"title"`
+	ImageURL string `json:"image_url"`
+	URL      string `json:"url"`
+	Excerpt  string `json:"excerpt"`
+	Author   Author
 }
 
 type Topic struct {
 	Url  string `json:"url"`
+	Type string `json:"type"`
 	Id   string `json:"id"`
 	Name string `json:"name"`
 }
 
 type Article struct {
-	IsPinned    int       `json:"is_pinned"`
-	Pid         int       `json:"pid"`
-	CoverImg    string    `json:"cover_img"`
-	Title       string    `json:"title"`
-	PreviewText string    `json:"preview_text"`
-	Content     string    `json:"content"`
-	PublishedAt time.Time `json:"published_at"`
-	Topics      []Topic   `json:"topics"`
+	ID       int     `json:"id"`
+	Type     string  `json:"type"`
+	Title    string  `json:"title"`
+	URL      string  `json:"url"`
+	IsPinned int     `json:"is_pinned"`
+	Updated  int     `json:"updated"`
+	Created  int     `json:"created"`
+	Excerpt  string  `json:"excerpt"`
+	Content  string  `json:"content"`
+	ImageURL string  `json:"image_url"`
+	Topics   []Topic `json:"topics"`
 }
 
 type ArticleList struct {
