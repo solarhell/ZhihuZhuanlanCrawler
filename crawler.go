@@ -10,7 +10,7 @@ func (c *Client) GetPinnedArticlePidAndAuthor(columnName string) (*PinnedArticle
 	if columnName == "" {
 		return nil, ColumnNameCanNotBeEmpty
 	}
-	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api2/columns/%s/pinned-article", columnName)
+	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api/columns/%s/pinned-article", columnName)
 	res, err := c.SendNewZhihuRequest(u)
 	if err != nil {
 		log.Println(err)
@@ -56,7 +56,7 @@ func (c *Client) GetArticlesListPids(columnName string) ([]int, error) {
 	var limit = 20
 	var offset = 0
 
-	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api2/columns/%s/articles?limit=%d&offset=%d", columnName, limit, offset)
+	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api/columns/%s/articles?limit=%d&offset=%d", columnName, limit, offset)
 	res, err := c.SendNewZhihuRequest(u)
 	if err != nil {
 		log.Println(err)
@@ -77,7 +77,7 @@ func (c *Client) GetArticlesListPids(columnName string) ([]int, error) {
 	}
 
 	for offset = offset + limit; offset < articleList.Paging.Totals; offset = offset + limit {
-		u := fmt.Sprintf("https://zhuanlan.zhihu.com/api2/columns/%s/articles?limit=%d&offset=%d", columnName, limit, offset)
+		u := fmt.Sprintf("https://zhuanlan.zhihu.com/api/columns/%s/articles?limit=%d&offset=%d", columnName, limit, offset)
 		res, err := c.SendNewZhihuRequest(u)
 		if err != nil {
 			log.Println(err)
