@@ -44,7 +44,6 @@ type Article struct {
 	Type     string  `json:"type"`
 	Title    string  `json:"title"`
 	URL      string  `json:"url"`
-	IsPinned int     `json:"is_pinned"`
 	Updated  int64   `json:"updated"`
 	Created  int64   `json:"created"`
 	Excerpt  string  `json:"excerpt"`
