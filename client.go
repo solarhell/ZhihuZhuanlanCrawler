@@ -39,6 +39,12 @@ func (c *Client) SendNewZhihuRequest(u string) ([]byte, error) {
 		return nil, err
 	}
 
+	success := checkHttpStatusCode(res.StatusCode)
+
+	if !success {
+		return c.SendNewZhihuRequest(u)
+	}
+
 	defer res.Body.Close()
 
 	bodyByte, err := ioutil.ReadAll(res.Body)
