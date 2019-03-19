@@ -3,13 +3,7 @@ workflow "Golang workflow" {
   resolves = ["Test"]
 }
  
-action "GolangCI-Lint" {
-  uses = "./.github/actions/golang"
-  args = "lint"
-}
- 
 action "Test" {
-  needs = ["GolangCI-Lint"]
   uses = "./.github/actions/golang"
   args = "test"
 }
