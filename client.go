@@ -28,8 +28,7 @@ func (c *Client) SendNewZhihuRequest(u string) ([]byte, error) {
 		return nil, err
 	}
 
-	req.Header.Add("Accept-Language", "zh-CN")
-	req.Header.Add("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3578.98 Safari/537.36")
+	req.Header.Add("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36")
 	req.Header.Add("Host", "zhuanlan.zhihu.com")
 	req.Header.Add("Referer", "https://zhuanlan.zhihu.com/")
 
@@ -37,12 +36,6 @@ func (c *Client) SendNewZhihuRequest(u string) ([]byte, error) {
 	if err != nil {
 		log.Println(err)
 		return nil, err
-	}
-
-	success := checkHttpStatusCode(res.StatusCode)
-
-	if !success {
-		return c.SendNewZhihuRequest(u)
 	}
 
 	defer res.Body.Close()

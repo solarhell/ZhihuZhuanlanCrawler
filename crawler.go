@@ -31,7 +31,7 @@ func (c *Client) GetSingleArticle(pid int) (*Article, error) {
 	if pid == 0 {
 		return nil, PidCanNotBeEmpty
 	}
-	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api/posts/%d", pid)
+	u := fmt.Sprintf("https://api.zhihu.com/articles/%d", pid)
 	res, err := c.SendNewZhihuRequest(u)
 	if err != nil {
 		log.Println(err)
