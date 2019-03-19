@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 APP_DIR="/go/src/github.com/${GITHUB_REPOSITORY}/"
 
