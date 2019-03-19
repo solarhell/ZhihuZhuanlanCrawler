@@ -18,7 +18,10 @@ import (
 )
 
 func main() {
-	const debug = true
+	log.SetFlags(log.LstdFlags | log.Lshortfile)
+
+    const debug = true
+
 	c := ZhihuZhuanlanCrawler.NewClient(&http.Client{
 		Timeout: 30 * time.Second,
 		Transport: &ZhihuZhuanlanCrawler.DebugRequestTransport{
@@ -32,12 +35,41 @@ func main() {
 		},
 	})
 
-	pinnedArticlePidAndAuthor, err := c.GetPinnedArticlePidAndAuthor("OTalk")
+	const columnName = "OTalk"
+
+	pinnedArticlePidAndAuthor, err := c.GetPinnedArticlePidAndAuthor(columnName)
 	if err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
+
 	fmt.Printf("%+v\n", *pinnedArticlePidAndAuthor)
+
+	pinnedArticle, err := c.GetSingleArticle(pinnedArticlePidAndAuthor.ID)
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
+
+	fmt.Printf("%+v\n", *pinnedArticle)
+
+	pids, err := c.GetArticlesListPids(columnName)
+	if err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
+
+	for _, pid := range pids {
+		if pid == pinnedArticle.ID {
+			continue
+		}
+		article, err := c.GetSingleArticle(pid)
+		if err != nil {
+			log.Println(err)
+			os.Exit(1)
+		}
+		fmt.Printf("%+v\n", *article)
+	}
 }
 ```
 
