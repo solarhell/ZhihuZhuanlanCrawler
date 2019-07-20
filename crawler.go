@@ -6,12 +6,12 @@ import (
 	"log"
 )
 
-func (c *Client) GetPinnedArticlePidAndAuthor(columnName string) (*PinnedArticleAndAuthor, error) {
+func GetPinnedArticlePidAndAuthor(columnName string) (*PinnedArticleAndAuthor, error) {
 	if columnName == "" {
 		return nil, ColumnNameCanNotBeEmpty
 	}
 	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api/columns/%s/pinned-article", columnName)
-	res, err := c.SendNewZhihuRequest(u)
+	res, err := sendNewZhihuRequest(u)
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -27,12 +27,12 @@ func (c *Client) GetPinnedArticlePidAndAuthor(columnName string) (*PinnedArticle
 	return &pinnedArticleAndAuthor, nil
 }
 
-func (c *Client) GetSingleArticle(pid int) (*Article, error) {
+func GetSingleArticle(pid int) (*Article, error) {
 	if pid == 0 {
 		return nil, PidCanNotBeEmpty
 	}
 	u := fmt.Sprintf("https://api.zhihu.com/articles/%d", pid)
-	res, err := c.SendNewZhihuRequest(u)
+	res, err := sendNewZhihuRequest(u)
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -48,7 +48,7 @@ func (c *Client) GetSingleArticle(pid int) (*Article, error) {
 	return &article, nil
 }
 
-func (c *Client) GetArticlesListPids(columnName string) ([]int, error) {
+func GetArticlesListPids(columnName string) ([]int, error) {
 	if columnName == "" {
 		return nil, ColumnNameCanNotBeEmpty
 	}
@@ -57,7 +57,7 @@ func (c *Client) GetArticlesListPids(columnName string) ([]int, error) {
 	var offset = 0
 
 	u := fmt.Sprintf("https://zhuanlan.zhihu.com/api/columns/%s/articles?limit=%d&offset=%d", columnName, limit, offset)
-	res, err := c.SendNewZhihuRequest(u)
+	res, err := sendNewZhihuRequest(u)
 	if err != nil {
 		log.Println(err)
 		return nil, err
@@ -78,7 +78,7 @@ func (c *Client) GetArticlesListPids(columnName string) ([]int, error) {
 
 	for offset = offset + limit; offset < articleList.Paging.Totals; offset = offset + limit {
 		u := fmt.Sprintf("https://zhuanlan.zhihu.com/api/columns/%s/articles?limit=%d&offset=%d", columnName, limit, offset)
-		res, err := c.SendNewZhihuRequest(u)
+		res, err := sendNewZhihuRequest(u)
 		if err != nil {
 			log.Println(err)
 			return nil, err
