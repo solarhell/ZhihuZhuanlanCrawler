@@ -1,2 +1,2 @@
-# github.com/imroc/req v0.2.4
+# github.com/imroc/req v0.3.0
 github.com/imroc/req
