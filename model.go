@@ -17,7 +17,6 @@ type Author struct {
 	URL         string `json:"url"`
 	URLToken    string `json:"url_token"`
 	UserType    string `json:"user_type"`
-	AvatarURL   string `json:"avatar_url"`
 }
 
 type PinnedArticleAndAuthor struct {
