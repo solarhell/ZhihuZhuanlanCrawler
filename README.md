@@ -10,3 +10,5 @@ go test -run TestCrawl -v
 ```
 
 具体用法可以参考 [`crawler_test.go`](crawler_test.go)。
+
+go doc [https://godoc.org/github.com/solarhell/ZhihuZhuanlanCrawler](https://godoc.org/github.com/solarhell/ZhihuZhuanlanCrawler)
