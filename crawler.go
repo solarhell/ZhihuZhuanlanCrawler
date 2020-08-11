@@ -4,6 +4,7 @@ import (
 	"fmt"
 )
 
+// 获取置顶文章pid以及作者信息
 func GetPinnedArticlePidAndAuthor(columnName string) (*PinnedArticleAndAuthor, error) {
 	if columnName == "" {
 		return nil, ColumnNameCanNotBeEmpty
@@ -23,6 +24,7 @@ func GetPinnedArticlePidAndAuthor(columnName string) (*PinnedArticleAndAuthor, e
 	return &pinnedArticleAndAuthor, nil
 }
 
+// 获取单个文章
 func GetSingleArticle(pid int) (*Article, error) {
 	if pid == 0 {
 		return nil, PidCanNotBeEmpty
@@ -42,6 +44,7 @@ func GetSingleArticle(pid int) (*Article, error) {
 	return &article, nil
 }
 
+// 获取文章pid列表
 func GetArticlesListPids(columnName string) ([]int, error) {
 	if columnName == "" {
 		return nil, ColumnNameCanNotBeEmpty

@@ -1,10 +1,12 @@
 package ZhihuZhuanlanCrawler
 
+// 专栏
 type Zhuanlan struct {
 	Slug string `json:"slug"`
 	Name string `json:"name"`
 }
 
+// 作者
 type Author struct {
 	ID          string `json:"id"`
 	Name        string `json:"name"`
@@ -19,6 +21,7 @@ type Author struct {
 	UserType    string `json:"user_type"`
 }
 
+// 置顶文章及作者信息
 type PinnedArticleAndAuthor struct {
 	Type     string `json:"type"`
 	ID       int    `json:"id"`
@@ -31,6 +34,7 @@ type PinnedArticleAndAuthor struct {
 	Author   Author
 }
 
+// 主题
 type Topic struct {
 	Url  string `json:"url"`
 	Type string `json:"type"`
@@ -38,6 +42,7 @@ type Topic struct {
 	Name string `json:"name"`
 }
 
+// 文章
 type Article struct {
 	ID       int     `json:"id"`
 	Type     string  `json:"type"`
@@ -51,6 +56,7 @@ type Article struct {
 	Topics   []Topic `json:"topics"`
 }
 
+// 文章列表
 type ArticleList struct {
 	Paging struct {
 		IsEnd   bool `json:"is_end"`
